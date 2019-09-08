@@ -1,5 +1,4 @@
 FROM nginx
-WORKDIR /usr/share/nginx/html
-COPY index.html /usr/share/nginx/html
+WORKDIR /etc/nginx
 EXPOSE 8080
 CMD ["nginx"]
