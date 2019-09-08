@@ -12,7 +12,9 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'docker build . -t my-nginx-image-1'
+                    app = docker.build("jc02/udacity-capstone-project")
+                    app.inside {
+                        sh 'echo $(curl localhost:8080)'
                     }
                 }
             }
