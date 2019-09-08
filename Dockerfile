@@ -1,5 +1,5 @@
 FROM nginx
-WORKDIR /usr/share/nginx/html
-COPY index.html /usr/share/nginx/html
+WORKDIR /usr/share/test
+
 EXPOSE 8080
 CMD ["nginx"]
