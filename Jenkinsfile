@@ -22,7 +22,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                withDockerRegistry([ "docker_hub_login", url: "https://registry.hub.docker.com" ]) {
+                withDockerRegistry([ credentialsId: "docker_hub_login", url: "https://registry.hub.docker.com" ]) {
                 sh 'docker push jc02/udacity-capstone-project:latest'
             }
          
