@@ -23,7 +23,7 @@ pipeline {
             }
             steps {
                 script {
-                withDockerRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
+                withDockerRegistry([ credentialsId: "docker_hub_login", url: "" ]) {
                 sh 'docker tag jc02/udacity-capstone-project:latest jc02/udacity-capstone-project'
                 sh 'docker push jc02/udacity-capstone-project'
             }
