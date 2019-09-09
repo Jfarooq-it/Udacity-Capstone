@@ -12,7 +12,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'docker build . -t jc02/udacity-capstone-project
+                    sh 'docker build . -t jc02/udacity-capstone-project'
                     }
                 }
             }
