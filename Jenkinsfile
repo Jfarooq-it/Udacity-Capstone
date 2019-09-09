@@ -12,7 +12,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'docker build . -t testing'
+                    sh 'docker run --name testimage -d -p 8003:80 nginx'
                     }
                 }
             }
