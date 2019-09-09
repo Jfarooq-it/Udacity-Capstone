@@ -22,9 +22,12 @@ pipeline {
                 branch 'master'
             }
             steps {
-                withDockerRegistry([ credentialsId: "docker_hub_login", url: "https://registry.hub.docker.com" ]) {
-                    sh 'docker tag jc02/udacity-capstone-project:latest jc02/udacity-capstone-project'
-                    sh 'docker push jc02/udacity-capstone-project'
+                sh 'dockerpath=jc02/udacity-capstone-project'
+                sh 'echo "Docker ID and Image: $dockerpath"'
+                sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin'
+                sh 'docker tag $dockerpath:latest $dockerpath'
+                sh 'docker push $dockerpath'
+
             }
          
             }
