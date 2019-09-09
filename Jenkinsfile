@@ -15,15 +15,21 @@ pipeline {
                     sh 'docker build . -t jc02/udacity-capstone-project'
                     }
                 }
-         stage('Publish image to Docker Hub') {
+         }
+             
+         stage('Push Docker Image') {
+             when {
+                branch 'master'
+            }
             steps {
-                sh 'dockerpath=jc02/udacity-capstone-project'
-                sh 'echo "Docker ID and Image: $dockerpath"'
-                sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin'
-                sh 'docker tag $dockerpath:latest $dockerpath'
-                sh 'docker push $dockerpath'
+                script {
+                docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
+                    app.push("${env.BUILD_NUMBER}")
+                     app.push("latest")
             }
          }
             }
         }
 }
+}
+
