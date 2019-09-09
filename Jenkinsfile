@@ -15,6 +15,15 @@ pipeline {
                     sh 'docker build . -t jc02/udacity-capstone-project'
                     }
                 }
+         stage('Publish image to Docker Hub') {
+            steps {
+                sh 'dockerpath=jc02/udacity-capstone-project'
+                sh 'echo "Docker ID and Image: $dockerpath"'
+                sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin'
+                sh 'docker tag $dockerpath:latest $dockerpath'
+                sh 'docker push $dockerpath'
+            }
+         }
             }
         }
 }
