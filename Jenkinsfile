@@ -12,9 +12,9 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'docker run --name testimage -d -p 8003:80 nginx'
+                    sh 'docker build . -t jc02/ucap'
                     }
                 }
             }
         }
-      
+}
