@@ -6,7 +6,7 @@ pipeline {
                 echo 'Running build automation'
             }
         }
-                stage('Build Docker Image') {
+         stage('Build Docker Image') {
             when {
                 branch 'master'
             }
