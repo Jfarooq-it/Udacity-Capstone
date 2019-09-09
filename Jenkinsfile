@@ -1,6 +1,7 @@
 pipeline {
     agent any
     stages {
+	    
         stage('Build') {
             steps {
                 echo 'Running build automation'
@@ -37,6 +38,17 @@ pipeline {
                 }
             }
         }
-}
+	    
+	    stage('Build Docker Container') {
+      		steps {
+        		sh 'docker run --name udacity-capstone -d -p 8000:80 jc02/udacity-capstone-project'
+      }
+    }
+
+    
+    
+    
+    
+    }
 }
 
