@@ -40,10 +40,15 @@ pipeline {
             }
         }
 	    
-	    stage('Build Docker Container') {
+	    stage('Remove old Docker Container') {
       		steps {
 			sh 'docker container rm udacity-capstone -f'
-        		sh 'docker run --name udacity-capstone -d -p 8000:80 jc02/udacity-capstone-project'
+      }
+    }
+	    
+	    stage('Build Docker Container') {
+      		steps {
+			sh 'docker run --name udacity-capstone -d -p 8000:80 jc02/udacity-capstone-project'
       }
     }
 
