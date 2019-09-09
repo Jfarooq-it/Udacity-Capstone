@@ -6,6 +6,13 @@ pipeline {
                 echo 'Running build automation'
             }
         }
+        
+        stage('Lint HTML') {
+        steps {
+          sh 'tidy -q -e *.html'
+          }
+		  }
+        
          stage('Build Docker Image') {
             when {
                 branch 'master'
