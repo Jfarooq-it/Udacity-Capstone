@@ -1,2 +1,5 @@
 FROM nginx
-COPY index.html /usr/share/nginx/html
+WORKDIR /app
+COPY . /app/
+EXPOSE 8080
+CMD ["nginx"]
