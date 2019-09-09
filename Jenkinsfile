@@ -12,7 +12,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'docker build . -t jc02/ucap'
+                    sh 'docker build . -t jc02/ucap1'
                     }
                 }
             }
