@@ -23,7 +23,7 @@ pipeline {
             }
             steps {
                 script {
-                 docker.withRegistry(docker login docker.io, 'docker_hub_login') {
+                 docker.withRegistry('docker.io', 'docker_hub_login') {
                     sh 'docker push jc02/udacity-capstone-project'
 
             }
